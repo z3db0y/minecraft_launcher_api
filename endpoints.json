@@ -1,0 +1,5 @@
+{
+    "VERSIONS": "https://launchermeta.mojang.com/mc/game/version_manifest.json",
+    "LIBRARIES": "https://libraries.minecraft.net/${libraryPath}",
+    "ASSETS": "https://resources.download.minecraft.net/${hashStart}/${hash}"
+}

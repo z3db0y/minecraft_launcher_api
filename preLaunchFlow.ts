@@ -1,6 +1,6 @@
 import "./extendString";
 import fetch from "./fetch";
-import consts from "../../consts.json";
+import endpoints from "./endpoints.json";
 import { Artifact, AssetInfo, VersionList, VersionMeta } from "api/types/versionmeta";
 import parseMeta from "./parseMeta";
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "fs";
@@ -9,7 +9,7 @@ import downloadFiles, { OverallProgress } from "./downloadFiles";
 import { createHash } from "crypto";
 
 async function downloadAndParseMeta(version: string): Promise<VersionMeta | void> {
-    let versionListResponse = await fetch(consts.ENDP.VERSIONS).catch(_ => {});
+    let versionListResponse = await fetch(endpoints.VERSIONS).catch(_ => {});
     if(!versionListResponse) return;
     let versionList = await new Promise<VersionList>((resolve, reject) => {
         if(!versionListResponse) return;
@@ -66,7 +66,7 @@ async function downloadAssets(assetInfoURL: string, assetRoot: string, index: st
     }
 
     return downloadFiles(filtered.map(x => { return {
-        url: consts.ENDP.ASSETS.format({
+        url: endpoints.ASSETS.format({
             hash: x.hash,
             hashStart: x.hash.slice(0, 2)
         }),
