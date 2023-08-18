@@ -75,6 +75,7 @@ export default function launch(javaPath: string, meta: VersionMeta, params: Laun
         javaPath,
         argFilter(meta.arguments.jvm, params, features),
         meta.mainClass,
-        argFilter(meta.arguments.game, params, features)
+        argFilter(meta.arguments.game, params, features),
+        params.game_directory
     );
 }
