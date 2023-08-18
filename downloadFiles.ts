@@ -80,13 +80,12 @@ export default function downloadFiles(files: (string | File)[], root: string) {
             let file = files[i];
             let response = await fetch(typeof file === 'string' ? file : file.url).catch(reject);
             if(!response) return;
+            let progress = new DownloadProgress(response);
+            resolve(progress);
             let dir = dirname(join(root, typeof file === 'string' ? basename(file) : file.path || basename(file.url)));
             if(!existsSync(dir)) mkdirSync(dir, { recursive: true });
             let fileStream = createWriteStream(join(root, typeof file === 'string' ? basename(file) : file.path || basename(file.url)));
             response.pipe(fileStream);
-            let progress = new DownloadProgress(response);
-
-            resolve(progress);
         }))
     }
 

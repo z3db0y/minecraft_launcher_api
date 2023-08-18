@@ -3,7 +3,6 @@ import { Argument, VersionMeta } from "./types/versionmeta";
 import match from "./ruleMatcher";
 
 function startJVM(javaPath: string, jvmArgs: string[], mainClass: string, args: string[], cwd?: string, env?: any, stdio?: StdioOptions) {
-    console.log(jvmArgs);
     return spawn(javaPath, [
         ...jvmArgs,
         mainClass,

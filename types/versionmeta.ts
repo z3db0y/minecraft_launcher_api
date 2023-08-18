@@ -78,6 +78,7 @@ export interface VersionMeta {
     libraries: Library[];
     mainClass: string;
     minecraftArguments?: string;
+    type?: 'release' | 'snapshot';
 }
 
 export interface VersionList {
