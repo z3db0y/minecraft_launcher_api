@@ -48,7 +48,7 @@ let javaPath = '/usr/bin/java';
 
     if(typeof downloadFailed === 'string') return console.log('Failed to download ' + (downloadFailed || 'Minecraft') + '.');
 
-    let binDirectory = join(rootDirectory, 'bin', randomBytes(16).toString('hex'));
+    let binDirectory = join('bin', randomBytes(16).toString('hex'));
     extractNatives(downloader.meta, rootDirectory, binDirectory);
 
     let launchParams: LaunchParams = {
